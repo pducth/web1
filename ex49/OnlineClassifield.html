@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Online Classifieds Search Form</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			padding: 22px 10px 32px;
+			background: #c8ffff;
+			color: #111;
+			font-family: "Times New Roman", serif;
+			font-size: 16px;
+		}
+
+		main {
+			width: min(650px, 100%);
+		}
+
+		h1 {
+			margin: 0 0 23px;
+			color: #f00;
+			font-size: 26px;
+		}
+
+		hr {
+			margin: 0 0 19px;
+			border: 0;
+			border-top: 2px solid #888;
+		}
+
+		h2 {
+			margin: 0 0 23px;
+			font-size: 18px;
+		}
+
+		.section {
+			margin-bottom: 25px;
+		}
+
+		.choice-grid {
+			display: grid;
+			grid-template-columns: 116px 1fr;
+			column-gap: 0;
+			row-gap: 3px;
+		}
+
+		label {
+			display: flex;
+			align-items: center;
+			min-height: 21px;
+			white-space: nowrap;
+		}
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			width: 15px;
+			height: 15px;
+			margin: 0 4px 0 9px;
+			accent-color: #178c37;
+		}
+
+		.publication-grid {
+			display: grid;
+			grid-template-columns: 194px 141px 1fr;
+			row-gap: 3px;
+		}
+
+		.date-range {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+		}
+
+		.date-range h2 {
+			margin: 0;
+			white-space: nowrap;
+		}
+
+		.date-range input {
+			width: 167px;
+			height: 26px;
+			padding: 2px 4px;
+			font: 16px Arial, sans-serif;
+		}
+
+		.keywords {
+			width: 100%;
+			height: 27px;
+			padding: 2px 4px;
+			font: 16px Arial, sans-serif;
+		}
+
+		.actions {
+			display: flex;
+			align-items: flex-start;
+			gap: 22px;
+			padding-left: 7px;
+		}
+
+		.actions button {
+			display: block;
+			padding: 0;
+			border: 0;
+			background: transparent;
+			cursor: pointer;
+		}
+
+		.actions img {
+			display: block;
+			width: auto;
+			height: auto;
+		}
+
+		@media (max-width: 560px) {
+			body {
+				padding-top: 16px;
+			}
+
+			.publication-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.date-range {
+				flex-wrap: wrap;
+			}
+
+			.date-range input {
+				width: min(167px, 38vw);
+			}
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Online Classifieds Search Form</h1>
+		<hr>
+
+		<form action="#" method="get">
+			<section class="section">
+				<h2>1) Search for a classified in the following sections:</h2>
+				<div class="choice-grid">
+					<label><input type="radio" name="section" value="employment">Employment</label>
+					<label><input type="radio" name="section" value="personal">Personal</label>
+					<label><input type="radio" name="section" value="for-sale" checked>For Sale</label>
+					<label><input type="radio" name="section" value="miscellaneous">Miscellaneous</label>
+					<label><input type="radio" name="section" value="housing">Housing</label>
+					<label><input type="radio" name="section" value="all">All of the above</label>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2>2) Search the following publications:</h2>
+				<div class="publication-grid">
+					<label><input type="checkbox" name="publication" value="midwest-times" checked>Midwest times</label>
+					<label><input type="checkbox" name="publication" value="modern-news">Modern News</label>
+					<label><input type="checkbox" name="publication" value="employment-today">Employment Today</label>
+					<label><input type="checkbox" name="publication" value="great-lakes" checked>Great Lakes Classifieds</label>
+					<label><input type="checkbox" name="publication" value="middleton-daily">Middleton Daily</label>
+					<label><input type="checkbox" name="publication" value="cashtown-daily">Cashtown Daily News</label>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="date-range">
+					<h2>3) From</h2>
+					<input id="date-from" name="dateFrom" type="text" placeholder="mm/dd/yy">
+					<span>to</span>
+					<input aria-label="End date" name="dateTo" type="text" placeholder="mm/dd/yy">
+					<span>.</span>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2>4) Enter a few keywords to describe the classified.</h2>
+				<input class="keywords" aria-label="Keywords" name="keywords" type="text">
+			</section>
+
+			<section class="section">
+				<h2>5) Click one of the options below:</h2>
+				<div class="actions">
+					<button type="submit" aria-label="Search">
+						<img src="Bai49/Search.gif" alt="Search">
+					</button>
+					<a href="https://www.linkedin.com/in/thiện-phan-đức-a93149366" aria-label="Help" target="_blank" rel="noopener noreferrer">
+						<img src="Bai49/Help.gif" alt="Help">
+					</a>
+					<button type="button" aria-label="Cancel" id="cancel-search">
+						<img src="Bai49/Cancel.gif" alt="Cancel">
+					</button>
+				</div>
+			</section>
+		</form>
+	</main>
+	<script>
+		const searchForm = document.querySelector("form");
+
+		searchForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			alert("Search");
+		});
+
+		document.getElementById("cancel-search").addEventListener("click", () => {
+			searchForm.reset();
+			searchForm.querySelectorAll("input[type='text']").forEach((input) => {
+				input.value = "";
+			});
+			searchForm.querySelectorAll("input[type='radio'], input[type='checkbox']").forEach((choice) => {
+				choice.checked = false;
+			});
+		});
+	</script>
+</body>
+</html>

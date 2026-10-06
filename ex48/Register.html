@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Electronics - Registration Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #9bc9f5;
+            color: #111;
+            font-family: "Times New Roman", serif;
+            font-size: 16px;
+        }
+
+        .page {
+            width: min(506px, calc(100% - 32px));
+            margin: 7px auto 24px;
+        }
+
+        .logo {
+            display: block;
+            width: 280px;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto 31px;
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            text-align: center;
+            font-size: 23px;
+        }
+
+        .intro {
+            margin: 0 0 4px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 175px minmax(0, 1fr);
+            align-items: center;
+            min-height: 25px;
+        }
+
+        label,
+        .row-label {
+            white-space: nowrap;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: 14px Arial, sans-serif;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            height: 22px;
+            padding: 1px 3px;
+        }
+
+        .name-fields,
+        .city-fields {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .name-fields input {
+            width: 109px;
+        }
+
+        .address-input {
+            width: 195px;
+        }
+
+        .city-input {
+            width: 138px;
+        }
+
+        .state-input {
+            width: 40px;
+        }
+
+        .zip-input {
+            width: 68px;
+        }
+
+        .country-input {
+            width: 138px;
+        }
+
+        hr {
+            margin: 10px 0 9px;
+            border: 0;
+            border-top: 1px solid #888;
+        }
+
+        .product-select,
+        .detail-input {
+            width: 138px;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 130px minmax(0, 1fr);
+            row-gap: 3px;
+        }
+
+        .choice-grid label {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .system-grid {
+            grid-template-columns: 130px minmax(0, 1fr);
+        }
+
+        .comments-row {
+            align-items: start;
+            padding-top: 3px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 98px;
+            resize: vertical;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        button {
+            padding: 2px 10px;
+        }
+
+        @media (max-width: 540px) {
+            .row {
+                grid-template-columns: 132px minmax(0, 1fr);
+            }
+
+            .name-fields,
+            .city-fields {
+                flex-wrap: wrap;
+            }
+
+            .name-fields input {
+                width: 95px;
+            }
+
+            .choice-grid,
+            .system-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <img class="logo" src="hinh/Jackson.gif" alt="Jackson Electronics">
+        <h1>Registration Form</h1>
+        <p class="intro">Register your Jackson Electronics product here</p>
+
+        <form id="register-form" action="#" method="post">
+            <div class="row">
+                <label for="first-name">First Name:</label>
+                <div class="name-fields">
+                    <input id="first-name" name="firstName" type="text">
+                    <label for="last-name">Last Name:</label>
+                    <input id="last-name" name="lastName" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <label for="address-1">Address #1:</label>
+                <input class="address-input" id="address-1" name="address1" type="text">
+            </div>
+            <div class="row">
+                <label for="address-2">Address #2:</label>
+                <input class="address-input" id="address-2" name="address2" type="text">
+            </div>
+            <div class="row">
+                <label for="city">City:</label>
+                <div class="city-fields">
+                    <input class="city-input" id="city" name="city" type="text">
+                    <label for="state">State:</label>
+                    <input class="state-input" id="state" name="state" type="text">
+                    <label for="zip">Zip:</label>
+                    <input class="zip-input" id="zip" name="zip" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <label for="country">Country:</label>
+                <input class="country-input" id="country" name="country" type="text" value="United States">
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <label for="product">Product:</label>
+                <select class="product-select" id="product" name="product">
+                    <option>ScanMaster</option>
+                    <option>PrintMaster</option>
+                    <option>PhotoMaster</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="purchase-date">Date Purchased:</label>
+                <input class="detail-input" id="purchase-date" name="purchaseDate" type="text">
+            </div>
+            <div class="row">
+                <label for="serial-number">Serial #:</label>
+                <input class="detail-input" id="serial-number" name="serialNumber" type="text">
+            </div>
+            <div class="row">
+                <span class="row-label">Used for:</span>
+                <div class="choice-grid">
+                    <label><input type="radio" name="usedFor" value="home"> Home</label>
+                    <label><input type="radio" name="usedFor" value="education"> Educational Institution</label>
+                    <label><input type="radio" name="usedFor" value="business" checked> Business</label>
+                    <label><input type="radio" name="usedFor" value="other"> Other</label>
+                    <label><input type="radio" name="usedFor" value="government"> Government</label>
+                </div>
+            </div>
+            <div class="row">
+                <span class="row-label">System (check all that apply):</span>
+                <div class="choice-grid system-grid">
+                    <label><input type="checkbox" name="system" value="windows"> Windows</label>
+                    <label><input type="checkbox" name="system" value="unix"> UNIX</label>
+                    <label><input type="checkbox" name="system" value="macintosh"> Macintosh</label>
+                    <label><input type="checkbox" name="system" value="other"> Other</label>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row comments-row">
+                <label for="comments">Comments?:</label>
+                <textarea id="comments" name="comments"></textarea>
+            </div>
+            <div class="buttons">
+                <button type="submit">Click to register</button>
+                <button id="cancel-button" type="button">Click to cancel</button>
+            </div>
+        </form>
+    </main>
+    <script>
+        const registerForm = document.getElementById("register-form");
+
+        registerForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            alert("Đăng ký");
+        });
+
+        document.getElementById("cancel-button").addEventListener("click", () => {
+            registerForm.reset();
+            registerForm.querySelectorAll("input[type='text'], textarea").forEach((field) => {
+                field.value = "";
+            });
+            registerForm.querySelectorAll("input[type='radio'], input[type='checkbox']").forEach((choice) => {
+                choice.checked = false;
+            });
+            registerForm.querySelector("select").selectedIndex = -1;
+        });
+    </script>
+</body>
+</html>

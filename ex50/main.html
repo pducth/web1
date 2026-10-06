@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Expense Report</title>
+  <style>
+    body {
+      background: #ccffff;
+      font-size: 13px;
+    }
+
+    .page {
+      width: 640px;
+    }
+
+    .logo-box {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .logo-box img {
+      width: 400px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .divider {
+      border-top: 1px solid #777;
+      margin-bottom: 12px;
+    }
+
+    .row {
+      margin-bottom: 8px;
+    }
+
+    .row label {
+      display: inline-block;
+      width: 140px;
+    }
+
+    input[type="text"] {
+      width: 90px;
+    }
+
+    .ssn {
+      width: 55px;
+    }
+
+    .purpose-box {
+      margin: 10px 0;
+    }
+
+    textarea {
+      display: block;
+      width: 370px;
+      height: 50px;
+      margin-top: 8px;
+    }
+
+    .table-wrap {
+      margin: 10px 0;
+    }
+
+    table {
+      width: 510px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #555;
+      padding: 2px;
+    }
+
+    th {
+      text-align: center;
+    }
+
+    td input, td select {
+      width: 100%;
+    }
+
+    .receipt-row, .button-row {
+      margin: 10px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="logo-box">
+        <img src="Bai50/DeLong.jpg" alt="DeLong Enterprises" />
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="title">Travel Expense Report</div>
+      <div class="divider"></div>
+
+      <form>
+        <div class="row">
+          <label>1) First Name:</label>
+          <input type="text" />
+          <label style="width: 80px; margin-left: 10px;">Last Name:</label>
+          <input type="text" />
+        </div>
+
+        <div class="row">
+          <label>2) Social Security Number:</label>
+          <input type="text" class="ssn" />
+        </div>
+
+        <div class="row">
+          <label>3) Department:</label>
+          <select>
+            <option selected>Accounting</option>
+            <option>Administration</option>
+            <option>Marketing</option>
+            <option>Sales</option>
+          </select>
+        </div>
+
+        <div class="purpose-box">
+          <label class="long">4) Describe the purpose of your trip.</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="table-wrap">
+          <label class="long" style="display:block; margin: 10px 0 8px 0;">5) Itemize your travel expenses</label>
+          <table>
+            <thead>
+              <tr>
+                <th style="width:25%;">Date</th>
+                <th style="width:30%;">Description</th>
+                <th style="width:20%;">Category</th>
+                <th style="width:25%;">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" placeholder="mm/dd/yy" /></td>
+                <td><input type="text" /></td>
+                <td>
+                  <select>
+                    <option selected>Meal</option>
+                    <option>Lodging</option>
+                    <option>Travel</option>
+                    <option>Misc</option>
+                  </select>
+                </td>
+                <td><input type="text" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="mm/dd/yy" /></td>
+                <td><input type="text" /></td>
+                <td>
+                  <select>
+                    <option selected>Meal</option>
+                    <option>Lodging</option>
+                    <option>Travel</option>
+                    <option>Misc</option>
+                  </select>
+                </td>
+                <td><input type="text" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="mm/dd/yy" /></td>
+                <td><input type="text" /></td>
+                <td>
+                  <select>
+                    <option selected>Meal</option>
+                    <option>Lodging</option>
+                    <option>Travel</option>
+                    <option>Misc</option>
+                  </select>
+                </td>
+                <td><input type="text" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="mm/dd/yy" /></td>
+                <td><input type="text" /></td>
+                <td>
+                  <select>
+                    <option selected>Meal</option>
+                    <option>Lodging</option>
+                    <option>Travel</option>
+                    <option>Misc</option>
+                  </select>
+                </td>
+                <td><input type="text" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="receipt-row">
+          <label>6) Have you submitted your receipts?</label>
+          <input type="radio" checked /> Yes
+          <input type="radio" /> No
+        </div>
+
+        <div class="button-row">
+          <button type="button" class="btn">Submit travel expenses</button>
+          <button type="reset" class="btn">Reset</button>
+        </div>
+      </form>
+
+      <p>Questions? Contact Debbie Larson in Accounting (ext. 2150).</p>
+    </div>
+  </div>
+</body>
+</html>
