@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 63</title>
+</head>
+<body>
+    <h1>Đăng ký thành viên</h1>
+    <hr>
+
+    <form id="memberForm">
+        <table>
+            <tr>
+                <td>Tên(*):</td>
+                <td><input type="text" id="txt_name" name="txt_name"></td>
+            </tr>
+            <tr>
+                <td>Ngày sinh(*):</td>
+                <td>
+                    Ngày:
+                    <select id="day" name="day"></select>
+                    Tháng:
+                    <select id="month" name="month"></select>
+                    Năm:
+                    <select id="year" name="year"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>Giới tính(*):</td>
+                <td>
+                    <input type="radio" name="gender" value="Nam"> Nam
+                    <input type="radio" name="gender" value="Nữ"> Nữ
+                </td>
+            </tr>
+            <tr>
+                <td>Email(*):</td>
+                <td><input type="email" id="txt_email" name="txt_email"></td>
+            </tr>
+        </table>
+
+        <p>Sở thích của bạn:<br>
+            <input type="checkbox" name="hobbies" value="Mua sắm"> Mua sắm<br>
+            <input type="checkbox" name="hobbies" value="Du lịch"> Du lịch<br>
+            <input type="checkbox" name="hobbies" value="Tán gẫu"> Tán gẫu<br>
+            <input type="checkbox" name="hobbies" value="Đọc sách"> Đọc sách<br>
+            <input type="checkbox" name="hobbies" value="Nghe nhạc"> Nghe nhạc
+        </p>
+
+        <p>Màu yêu thích của bạn:</p>
+        <table>
+            <tr>
+                <td><input type="radio" name="color" value="Màu xanh da trời"></td>
+                <td bgcolor="blue">Màu xanh da trời</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="color" value="Màu đỏ"></td>
+                <td bgcolor="red">Màu đỏ</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="color" value="Màu vàng"></td>
+                <td bgcolor="yellow">Màu vàng</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="color" value="Màu xanh xanh lá cây"></td>
+                <td bgcolor="green">Màu xanh xanh lá cây</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="color" value="Màu xanh tím"></td>
+                <td bgcolor="violet">Màu xanh tím</td>
+            </tr>
+        </table>
+        <input type="button" id="register" value="Đăng ký">
+        <input type="button" id="next" value="Tiếp">
+    </form>
+    <br>
+    <table border="1" width="100%">
+        <thead>
+            <tr bgcolor="blue">
+                <th><font color="white">Tên</font></th>
+                <th><font color="white">Email</font></th>
+                <th><font color="white">Giới tính</font></th>
+                <th><font color="white">Năm sinh</font></th>
+                <th><font color="white">Sở thích</font></th>
+                <th><font color="white">Màu yêu thích</font></th>
+            </tr>
+        </thead>
+        <tbody id="memberTable"></tbody>
+    </table>
+    <script>
+        const daySelect = document.getElementById("day");
+        const monthSelect = document.getElementById("month");
+        const yearSelect = document.getElementById("year");
+        const form = document.getElementById("memberForm");
+        const memberTable = document.getElementById("memberTable");
+
+        for (let day = 1; day <= 31; day++) {
+            const option = document.createElement("option");
+            option.value = day;
+            option.textContent = day < 10 ? "0" + day : day;
+            daySelect.appendChild(option);
+        }
+
+        for (let month = 1; month <= 12; month++) {
+            const option = document.createElement("option");
+            option.value = month;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        }
+
+        for (let year = 1970; year <= 2010; year++) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+
+        document.getElementById("register").addEventListener("click", function () {
+            const name = document.getElementById("txt_name").value.trim();
+            const email = document.getElementById("txt_email").value.trim();
+            const emailInput = document.getElementById("txt_email");
+
+            if (name === "") {
+                alert("Tên không được bỏ trống!");
+                document.getElementById("txt_name").focus();
+                return;
+            }
+
+            if (email === "" || !emailInput.validity.valid) {
+                alert("Email phải hợp lệ!");
+                emailInput.focus();
+                return;
+            }
+
+            const gender = form.querySelector('input[name="gender"]:checked').value;
+            const color = form.querySelector('input[name="color"]:checked').value;
+            const hobbies = Array.from(form.querySelectorAll('input[name="hobbies"]:checked'))
+                .map(function (checkbox) {
+                    return checkbox.value;
+                })
+                .join(", ");
+            const values = [
+                name,
+                email,
+                gender,
+                daySelect.value + "/" + monthSelect.value + "/" + yearSelect.value,
+                hobbies,
+                color
+            ];
+            const row = document.createElement("tr");
+
+            values.forEach(function (value) {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+
+            row.addEventListener("mouseover", function () {
+                row.bgColor = "yellow";
+            });
+            row.addEventListener("mouseout", function () {
+                row.bgColor = "white";
+            });
+            memberTable.appendChild(row);
+        });
+
+        document.getElementById("next").addEventListener("click", function () {
+            form.reset();
+            daySelect.selectedIndex = 0;
+            monthSelect.selectedIndex = 0;
+            yearSelect.selectedIndex = 0;
+            document.getElementById("txt_name").focus();
+        });
+    </script>
+</body>
+</html>
